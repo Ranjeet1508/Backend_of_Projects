@@ -2,6 +2,7 @@ const express = require("express");
 const  {connection}  = require("./config/db");
 const  {userRouter}  = require("./Routes/userRoute")
 const  {todoRouter}  = require('./Routes/todoRoute')
+const {productRouter} = require("./Routes/productRoute")
 const cors = require("cors");
 require('dotenv').config();
 
@@ -12,8 +13,9 @@ app.use(cors({
 }))
 app.use(express.json());
 
-app.use("/user",userRouter);
-app.use("/todo",todoRouter)
+//app.use("/user",userRouter);
+app.use("/todo",todoRouter);
+app.use("/product",productRouter)
 
 
 app.listen(PORT, async() => {
