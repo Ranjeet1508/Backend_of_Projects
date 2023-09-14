@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 
 const userSchema = mongoose.Schema({
-    name: {type: String, required: true},
-    //city: {type: String, required: true},
+    fullName: {type: String, required: true},
     email: {
         type: String,
         required: true,
@@ -16,8 +15,7 @@ const userSchema = mongoose.Schema({
             message: props => `${props.value} is not a valid email address!`
         }
     },
-    password: {type: String, required: true},
-    confirmPassword: {type: String},
+    password: {type: String, required: true}
 })
 const UserModel = mongoose.model("user",userSchema);
 

@@ -11,14 +11,14 @@ userRouter.get("/", (req,res) => {
 })
 
 userRouter.post("/signup", async (req,res) => {
-    const {name,email,password,confirmPassword} = req.body;
+    const {fullName,email,password} = req.body;
     const user = await UserModel.findOne({"email":email})
     if(user){
         return res.send({msg: "user already exist"})
     }
-    bcrypt.hash(password, 2, function(err, hash) {
-        const new_user = new UserModel({
-            name,
+    bcrypt.hash(password, 2,async function(err, hash) {
+        const new_user = await new UserModel({
+            fullName,
             email,
             password: hash,
         })
