@@ -5,7 +5,7 @@ const {ProductModel} = require("../Model/productModel")
 
 productRouter.get("/", async(req,res) => {
     try {
-        const {q,filterByCategory,sortBy,page,perpage} = req.params;
+        const {q,filterByCategory,sortBy,page,perpage} = req.query;
         const query = {}
 
         if(q){
@@ -22,7 +22,7 @@ productRouter.get("/", async(req,res) => {
         }
         const limit = +(perpage);
 
-        const product = ProductModel.find(query).sort(sortOption).limit(limit);
+        const product = await ProductModel.find(query).sort(sortOption).limit(limit);
         res.send(product)
     } catch (error) {
         return res.send({msg: "Something went wrong " , error})
@@ -49,7 +49,7 @@ productRouter.post("/add", async(req,res) => {
 productRouter.put("/update/:id", async(req,res) => {
     const {id} = req.params;
     const updatedData = req.body;
-    await ProductModel.findOneAndUpdate({"_id":id})
+    await ProductModel.findOneAndUpdate({"_id":id},updatedData)
     res.send("product updated successfully");
 })
 

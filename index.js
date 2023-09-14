@@ -3,6 +3,10 @@ const  {connection}  = require("./config/db");
 const  {userRouter}  = require("./Routes/userRoute")
 const  {todoRouter}  = require('./Routes/todoRoute')
 const {productRouter} = require("./Routes/productRoute")
+const {asiaRouter} = require('./Routes/asiaRoutes')
+const {africaRouter} = require('./Routes/africaRoutes');
+const {europeRouter} = require('./Routes/europeRoutes');
+const {latinamericaRouter} = require('./Routes/latinamericaRoutes');
 const cors = require("cors");
 require('dotenv').config();
 
@@ -13,9 +17,13 @@ app.use(cors({
 }))
 app.use(express.json());
 
-//app.use("/user",userRouter);
-app.use("/todo",todoRouter);
-app.use("/product",productRouter)
+app.use("/user",userRouter);
+//app.use("/todo",todoRouter);
+app.use("/product",productRouter);
+app.use("/asia",asiaRouter);
+app.use("/africa",africaRouter);
+app.use("/europe",europeRouter);
+app.use("/latinamerica",latinamericaRouter);
 
 
 app.listen(PORT, async() => {

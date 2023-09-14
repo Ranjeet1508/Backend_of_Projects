@@ -7,7 +7,7 @@ require('dotenv').config();
 
 
 userRouter.get("/", (req,res) => {
-    res.send("Signup Successfull")
+    res.send("base users api Successfull")
 })
 
 userRouter.post("/signup", async (req,res) => {
