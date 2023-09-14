@@ -23,7 +23,7 @@ userRouter.post("/signup", async (req,res) => {
             password: hash
         })
         new_user.save();
-        res.send("Signup Successfull")
+        res.send("Signup Successfull");
     });
 })
 
