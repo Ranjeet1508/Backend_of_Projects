@@ -11,7 +11,7 @@ userRouter.get("/", (req,res) => {
 })
 
 userRouter.post("/signup", async (req,res) => {
-    const {name,city,email,password} = req.body;
+    const {name,email,password} = req.body;
     const user = await UserModel.findOne({"email":email})
     if(user){
         return res.send({msg: "user already exist"})
@@ -19,9 +19,8 @@ userRouter.post("/signup", async (req,res) => {
     bcrypt.hash(password, 2, function(err, hash) {
         const new_user = new UserModel({
             name,
-            city,
             email,
-            password: hash,
+            password: hash
         })
         new_user.save();
         res.send("Signup Successfull")
