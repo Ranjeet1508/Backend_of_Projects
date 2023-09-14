@@ -11,7 +11,7 @@ userRouter.get("/", (req,res) => {
 })
 
 userRouter.post("/signup", async (req,res) => {
-    const {name,email,password} = req.body;
+    const {name,email,password,confirmPassword} = req.body;
     const user = await UserModel.findOne({"email":email})
     if(user){
         return res.send({msg: "user already exist"})
@@ -20,7 +20,7 @@ userRouter.post("/signup", async (req,res) => {
         const new_user = new UserModel({
             name,
             email,
-            password: hash
+            password: hash,
         })
         new_user.save();
         res.send("Signup Successfull");
