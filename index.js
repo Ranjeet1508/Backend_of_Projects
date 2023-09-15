@@ -7,6 +7,7 @@ const {asiaRouter} = require('./Routes/asiaRoutes')
 const {africaRouter} = require('./Routes/africaRoutes');
 const {europeRouter} = require('./Routes/europeRoutes');
 const {latinamericaRouter} = require('./Routes/latinamericaRoutes');
+const mongoose = require("mongoose");
 const cors = require("cors");
 require('dotenv').config();
 
