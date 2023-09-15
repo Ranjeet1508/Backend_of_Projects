@@ -16,8 +16,8 @@ userRouter.post("/signup", async (req,res) => {
     if(user){
         return res.send({msg: "user already exist"})
     }
-    bcrypt.hash(password, 2,async function(err, hash) {
-        const new_user = await new UserModel({
+    bcrypt.hash(password, 2, function(err, hash) {
+        const new_user = new UserModel({
             fullName,
             email,
             password: hash,
