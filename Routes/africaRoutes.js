@@ -33,7 +33,7 @@ africaRouter.get("/", async(req,res) => {
 
 africaRouter.get("/country/:_id", async(req,res) => {
         const {_id} = req.params;
-        //const objectId = mongoose.Types.ObjectId(_id);
+       // //const objectId = mongoose.Types.ObjectId(_id);
     try {
         const product = await AfricaModel.findById(_id)
         res.send(product)
