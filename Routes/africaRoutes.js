@@ -34,7 +34,7 @@ africaRouter.get("/", async(req,res) => {
 africaRouter.get("/country/:_id", async(req,res) => {
     try {
         const {_id} = req.params;
-        const product = await AfricaModel.findById({_id})
+        const product = await AfricaModel.findById(_id)
         res.send(product)
     } catch (error) {
         return res.send({msg: "Something went wrong " , error})
