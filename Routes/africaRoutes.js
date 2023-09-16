@@ -9,7 +9,7 @@ africaRouter.get("/", async(req,res) => {
         const query = {}
 
         if(q){
-            query.id = {$regex: q, $options:'i'};
+            query.title = {$regex: q, $options:'i'};
         }
 
         if(filterByCategory){
@@ -18,7 +18,8 @@ africaRouter.get("/", async(req,res) => {
 
         const sortOption = {};
         if(sortBy){
-            sortOption[sortBy] = 1;
+             sortOption[sortBy] = 1;
+            //sortOption = { price: _order === "desc" ? -1 : 1 }
         }
         const limit = +(perpage);
 
@@ -29,6 +30,16 @@ africaRouter.get("/", async(req,res) => {
     }
 })
 
+
+africaRouter.get("/country/:_id", async(req,res) => {
+    try {
+        const {_id} = req.query;
+        const product = await AfricaModel.findById(_id)
+        res.send(product)
+    } catch (error) {
+        return res.send({msg: "Something went wrong " , error})
+    }
+})
 
 
 
