@@ -9,7 +9,7 @@ asiaRouter.get("/", async(req,res) => {
         const query = {}
 
         if(q){
-            query.title = {$regex: q, $options:'i'};
+            query.id = {$regex: q, $options:'i'};
         }
 
         if(filterByCategory){
