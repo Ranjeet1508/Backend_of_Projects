@@ -29,6 +29,16 @@ asiaRouter.get("/", async(req,res) => {
     }
 })
 
+asiaRouter.get("/:_id", async(req,res) => {
+    const {_id} = req.params;
+try {
+    const product = await AsiaModel.findById(_id)
+    res.send(product)
+} catch (error) {
+    return res.send({msg: "Something went wrong " , error})
+}
+})
+
 
 
 

@@ -1,6 +1,6 @@
 const {Router} = require("express");
 const africaRouter = Router();
-const {AfricaModel} = require("../Model/africaModel")
+const {AfricaModel} = require("../Model/africaModel");
 
 
 africaRouter.get("/", async(req,res) => {
