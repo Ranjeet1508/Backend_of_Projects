@@ -1,9 +1,10 @@
 const {Router} = require("express");
 const europeRouter = Router();
-const {EuropeModel} = require("../Model/europeModel")
+const {EuropeModel} = require("../Model/europeModel");
+const {authentication} = require('../Authentication/authencation');
 
 
-europeRouter.get("/", async(req,res) => {
+europeRouter.get("/", authentication, async(req,res) => {
     try {
         const {q,filterByCategory,sortBy,page,perpage} = req.query;
         const query = {}
@@ -29,7 +30,7 @@ europeRouter.get("/", async(req,res) => {
     }
 })
 
-europeRouter.get("/:_id", async(req,res) => {
+europeRouter.get("/:_id", authentication, async(req,res) => {
     const {_id} = req.params;
 try {
     const product = await EuropeModel.findById(_id)

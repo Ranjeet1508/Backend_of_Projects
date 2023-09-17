@@ -1,9 +1,10 @@
 const {Router} = require("express");
 const latinamericaRouter = Router();
 const {LatinAmericaModel} = require("../Model/latinamericaModel")
+const {authentication} = require('../Authentication/authencation')
 
 
-latinamericaRouter.get("/", async(req,res) => {
+latinamericaRouter.get("/", authentication, async(req,res) => {
     try {
         const {q,filterByCategory,sortBy,page,perpage} = req.query;
         const query = {}
@@ -29,7 +30,7 @@ latinamericaRouter.get("/", async(req,res) => {
     }
 })
 
-latinamericaRouter.get("/:_id", async(req,res) => {
+latinamericaRouter.get("/:_id", authentication, async(req,res) => {
     const {_id} = req.params;
 try {
     const product = await LatinAmericaModel.findById(_id)
